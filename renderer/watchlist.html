@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; img-src * data:;">
+  <title>Movie Planner - My List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar glass-nav">
+    <div class="logo">MOVIE<span>PLANNER</span></div>
+    <h2 style="color: white; margin: 0;">My Watchlist</h2>
+    <button id="backToHomeBtn" class="nav-btn">⬅ Back to Home</button>
+  </nav>
+
+  <div class="dashboard-container">
+    <!-- Statistics -->
+    <div class="stats-container">
+      <div class="stat-box glass-box"><span id="statTotal" class="highlight-text">0</span><label>Total Movies</label></div>
+      <div class="stat-box glass-box"><span id="statBacklog" class="backlog-text">0</span><label>Plan to Watch</label></div>
+      <div class="stat-box glass-box"><span id="statOnHold" class="hold-text">0</span><label>On Hold</label></div>
+      <div class="stat-box glass-box"><span id="statCompleted" class="success-text">0</span><label>Completed</label></div>
+      <div class="stat-box glass-box"><span id="statTotalRuntime" class="accent-text">0h 0m</span><label>Watch Time</label></div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls-bar glass-box">
+      <div class="suggestion-box">
+        <h3>🎲 Cure Decision Paralysis</h3>
+        <p id="suggestionText">Can't decide? Let us pick from your backlog!</p>
+        <button onclick="generateSuggestion()">Pick a Movie</button>
+      </div>
+      
+      <div class="sort-container">
+        <label>Sort By:</label>
+        <select id="sortSelect" onchange="renderWatchlist()">
+          <option value="status">Status</option>
+          <option value="year">Release Year</option>
+          <option value="rating">My Rating</option>
+          <option value="title">Alphabetical</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Movie List -->
+    <div class="list-container" id="watchlistContainer"></div>
+    
+    <p id="emptyMessage" style="display: none; text-align: center; color: #888; margin-top: 40px;">
+      Your watchlist is empty. Go back to the Home window to add movies!
+    </p>
+  </div>
+
+  <!-- Details Modal -->
+  <div id="movieModal" class="modal" style="display: none;">
+    <div class="modal-content glass-box">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <div class="modal-body">
+        <img id="modalPoster" src="https://placehold.co/300x450/1f1f1f/ffffff?text=Loading..." alt="Poster" onerror="this.onerror=null; this.src='https://placehold.co/300x450/1f1f1f/ffffff?text=No+Poster'">
+        <div class="modal-info">
+          <h2 id="modalTitle">Movie Title</h2>
+          <p id="modalMeta" class="meta-text">Year • Runtime • Genre</p>
+          <p id="modalPlot" class="plot-text">Plot synopsis goes here...</p>
+          <p><strong>Director:</strong> <span id="modalDirector"></span></p>
+          <p><strong>Actors:</strong> <span id="modalActors"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="watchlist.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "myanime-app",
+  "version": "1.0.0",
+  "description": "Anime Planner App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Muhammad Zaki bin Mohamad Roshidi",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "electron": "^45.1.0"
+  }
+}

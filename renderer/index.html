@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; img-src * data:;">
+  <title>Movie Planner - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar glass-nav">
+    <div class="logo">MOVIE<span>PLANNER</span></div>
+    <button id="openWatchlistBtn" class="nav-btn">📋 My Watchlist</button>
+  </nav>
+
+  <!-- Search Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Find your next favorite movie.</h1>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for a movie (e.g., Inception)...">
+        <button id="searchBtn">Search</button>
+      </div>
+      <div id="feedbackMessage" class="feedback" style="display: none;"></div>
+    </div>
+  </header>
+
+  <!-- Dashboard (Trending & Top Rated) -->
+  <div id="homeDashboard">
+    <div class="row-container">
+      <h2 class="row-title">🔥 Trending Now</h2>
+      <div id="trendingGrid" class="horizontal-scroll"></div>
+    </div>
+    <div class="row-container">
+      <h2 class="row-title">🏆 Top Rated</h2>
+      <div id="topRatedGrid" class="horizontal-scroll"></div>
+    </div>
+  </div>
+
+  <!-- Search Results (Hidden by default) -->
+  <div class="row-container" id="searchResultsSection" style="display: none;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+      <h2 class="row-title" style="margin-bottom: 0;">🔎 Search Results</h2>
+      <button id="clearSearchBtn" class="nav-btn" style="border-color: var(--primary-color); color: var(--primary-color);">✖ Clear Search</button>
+    </div>
+    <div id="resultsGrid" class="grid"></div>
+  </div>
+
+  <!-- Movie Details Modal -->
+  <div id="movieModal" class="modal" style="display: none;">
+    <div class="modal-content glass-box">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <div class="modal-body">
+        <img id="modalPoster" src="https://placehold.co/300x450/1f1f1f/ffffff?text=Loading..." alt="Poster" onerror="this.onerror=null; this.src='https://placehold.co/300x450/1f1f1f/ffffff?text=No+Poster'">
+        <div class="modal-info">
+          <h2 id="modalTitle">Movie Title</h2>
+          <p id="modalMeta" class="meta-text">Year • Runtime • Genre</p>
+          <p id="modalPlot" class="plot-text">Plot synopsis goes here...</p>
+          <p><strong>Director:</strong> <span id="modalDirector"></span></p>
+          <p><strong>Actors:</strong> <span id="modalActors"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="index.js"></script>
+</body>
+</html>
